@@ -1,1 +1,23 @@
-<p *rxFor="let product of products$"></p>
+<div *ngIf="products$ as products" class="container">
+  <h1>Новинки</h1>
+  <ul>
+    <li *rxFor="let product of products">
+      <img
+        [alt]="product.title"
+        [height]="imgOptions.height"
+        [width]="imgOptions.width"
+        src="{{ product.thumbnail }}" />
+      <h2>{{ product.title | titlecase }} {{ product.brand }}</h2>
+      <p>{{ product.description }}</p>
+      <div *ngIf="!!product.discountPercentage; else noDiscount" class="">
+        <span>{{ getFullPrice(product.price, product.discountPercentage) | rub | price }}</span>
+        <span>{{ product.price | rub | price }}</span>
+        <span>-{{ product.discountPercentage | number : '1.0-0' }}%</span></div
+      >
+      <button>В корзину</button>
+      <ng-template #noDiscount
+        ><span>{{ product.price | rub | price }}</span></ng-template
+      >
+    </li>
+  </ul>
+</div>

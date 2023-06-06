@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core'
-import { tap } from 'rxjs'
+import { Observable } from 'rxjs'
 import { ProductsService } from '../../services/products.service'
+import { Product } from '../../../shared/models/product.model'
 
 @Component({
   selector: 'mt-product-cards',
@@ -9,7 +10,12 @@ import { ProductsService } from '../../services/products.service'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductCardsComponent {
-  public products$ = this.productsService.products.pipe(tap(console.log))
+  public products$: Observable<Product[]> = this.productsService.products
+  public imgOptions = { width: 141, height: 150 }
 
   constructor(private productsService: ProductsService) {}
+
+  public getFullPrice(price: number, discount: number): number {
+    return price + (price / 100) * discount
+  }
 }
