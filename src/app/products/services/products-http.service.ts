@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { map, Observable } from 'rxjs'
 import { Product } from '../../shared/models/product.model'
-import { productsLimit } from '../constants/products-limit.const'
+import { productsLimit } from '../constants/products-limit'
 import { ProductsResponse } from '../models/products-response.model'
 
 @Injectable({
