@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core'
 import { Observable } from 'rxjs'
 import { ProductsService } from '../../services/products.service'
 import { Product } from '../../../shared/models/product.model'
+import { maxImageSize } from '../../constants/max-image-size'
 
 @Component({
   selector: 'mt-product-cards',
@@ -11,7 +12,7 @@ import { Product } from '../../../shared/models/product.model'
 })
 export class ProductCardsComponent {
   public products$: Observable<Product[]> = this.productsService.products
-  public imgOptions = { width: 141, height: 150 }
+  public imgOptions = maxImageSize
 
   constructor(private productsService: ProductsService) {}
 

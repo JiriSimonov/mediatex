@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core'
-import { formatCurrency, getCurrencySymbol } from '@angular/common'
+import { formatCurrency } from '@angular/common'
+import { pricePipeOptions } from '../constants/price-pipe-options'
 
 @Pipe({
   name: 'price',
@@ -7,10 +8,10 @@ import { formatCurrency, getCurrencySymbol } from '@angular/common'
 export class PricePipe implements PipeTransform {
   public transform(
     value: number,
-    currencyCode: string = '₽',
-    digitsInfo: string = '3.0-0',
-    locale: string = 'ru',
-  ): string | null {
-    return formatCurrency(value, locale, getCurrencySymbol(currencyCode, 'wide'), currencyCode, digitsInfo)
+    currencyCode: string = pricePipeOptions.currencyCode,
+    digitsInfo: string = pricePipeOptions.digitsInfo,
+    locale: string = pricePipeOptions.locale,
+  ): string {
+    return formatCurrency(value, locale, currencyCode, currencyCode, digitsInfo)
   }
 }
