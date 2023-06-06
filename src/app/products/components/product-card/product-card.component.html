@@ -1,0 +1,13 @@
+<img [alt]="product.title" [height]="imgOptions.height" [width]="imgOptions.width" src="{{ product.thumbnail }}" />
+<h2 class="products__item-title">{{ product.title | titlecase }}</h2>
+<div *ngIf="product.discountPercentage > 0; else noDiscount">
+  <span class="products__price products__price_initial">{{
+    getFullPrice(product.price, product.discountPercentage) | rub | price
+  }}</span>
+  <span class="products__sale">-{{ product.discountPercentage | number : '1.0-0' }}%</span>
+  <div class="products__price">{{ product.price | rub | price }}</div>
+</div>
+<button (click)="onClickHandler()" class="products__button">{{ inCart ? 'Удалить' : 'В корзину' }}</button>
+<ng-template #noDiscount
+  ><span class="products__price products__price_no-sale">{{ product.price | rub | price }}</span></ng-template
+>
