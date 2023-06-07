@@ -6,12 +6,12 @@ import { CartService } from '../../../cart/services/cart.service'
 import { ProductState } from '../../models/product-state.model'
 
 @Component({
-  selector: 'mt-product-cards',
-  templateUrl: './product-cards.component.html',
-  styleUrls: ['./product-cards.component.scss'],
+  selector: 'mt-products-list',
+  templateUrl: './products-list.component.html',
+  styleUrls: ['./products-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductCardsComponent {
+export class ProductsListComponent {
   public products$: Observable<Product[]> = this.productsService.products
 
   constructor(private productsService: ProductsService, private cartService: CartService) {}
@@ -22,5 +22,9 @@ export class ProductCardsComponent {
       return
     }
     this.cartService.addToCart(product)
+  }
+
+  public trackItem(id: number, item: Product): number {
+    return item.id
   }
 }

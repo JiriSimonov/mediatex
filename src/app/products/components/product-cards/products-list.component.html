@@ -1,7 +1,7 @@
 <div *ngIf="products$ as products" class="products">
   <h1 class="products__title">Новинки</h1>
   <ul class="products__list">
-    <li *rxFor="let product of products$" class="products__item">
+    <li *rxFor="let product of products$; trackBy: trackItem" class="products__item">
       <mt-product-card (a)="onClickHandler($event)" [product]="product"></mt-product-card>
     </li>
   </ul>
