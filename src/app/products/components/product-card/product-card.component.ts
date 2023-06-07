@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core'
 import { Product } from 'src/app/shared/models/product.model'
-import { maxImageSize } from '../../constants/max-image-size'
 import { ProductState } from '../../models/product-state.model'
 
 @Component({
@@ -14,8 +13,6 @@ export class ProductCardComponent {
   @Output() public a = new EventEmitter<ProductState>()
 
   public inCart = false
-  public readonly imgOptions = maxImageSize
-  protected readonly maxImageSize = maxImageSize
 
   public getFullPrice(price: number, discount: number): number {
     return price + (price / 100) * discount
@@ -24,5 +21,9 @@ export class ProductCardComponent {
   public onClickHandler(): void {
     this.a.emit({ inCart: this.inCart, product: this.product })
     this.inCart = !this.inCart
+  }
+
+  public getStars(rating: number): number[] {
+    return Array.from({ length: Math.round(rating) })
   }
 }

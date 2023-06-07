@@ -4,7 +4,6 @@ import { ProductsService } from '../../services/products.service'
 import { Product } from '../../../shared/models/product.model'
 import { CartService } from '../../../cart/services/cart.service'
 import { ProductState } from '../../models/product-state.model'
-import { maxImageSize } from '../../constants/max-image-size'
 
 @Component({
   selector: 'mt-product-cards',
@@ -14,7 +13,6 @@ import { maxImageSize } from '../../constants/max-image-size'
 })
 export class ProductCardsComponent {
   public products$: Observable<Product[]> = this.productsService.products
-  protected readonly maxImageSize = maxImageSize
 
   constructor(private productsService: ProductsService, private cartService: CartService) {}
 

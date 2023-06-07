@@ -1,13 +1,21 @@
-<img [alt]="product.title" [height]="imgOptions.height" [width]="imgOptions.width" src="{{ product.thumbnail }}" />
+<div class="products__image-wrapper">
+  <img [alt]="product.title" class="products__image" src="{{ product.thumbnail }}" />
+</div>
+<div class="products__testimonials">
+  <div class="products__stars">
+    <span *ngFor="let star of getStars(product.rating)" class="products__star"></span>
+  </div>
+  <span class="products__testimonial">{{ product.stock }}</span>
+</div>
 <h2 class="products__item-title">{{ product.title | titlecase }}</h2>
 <div *ngIf="product.discountPercentage > 0; else noDiscount">
   <span class="products__price products__price_initial">{{
-    getFullPrice(product.price, product.discountPercentage) | rub | price
+    getFullPrice(product.price, product.discountPercentage) | price
   }}</span>
   <span class="products__sale">-{{ product.discountPercentage | number : '1.0-0' }}%</span>
-  <div class="products__price">{{ product.price | rub | price }}</div>
+  <div class="products__price">{{ product.price | price }}</div>
 </div>
 <button (click)="onClickHandler()" class="products__button">{{ inCart ? 'Удалить' : 'В корзину' }}</button>
 <ng-template #noDiscount
-  ><span class="products__price products__price_no-sale">{{ product.price | rub | price }}</span></ng-template
+  ><span class="products__price products__price_no-sale">{{ product.price | price }}</span></ng-template
 >
