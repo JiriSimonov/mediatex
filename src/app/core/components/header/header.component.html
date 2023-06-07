@@ -1,6 +1,6 @@
 <header class="header">
   <div *ngIf="cartItems$ | async as cartItems" class="container">
-    <div *ngIf="cartItems.length > 0" class="header__wrapper">
+    <div class="header__wrapper">
       <div class="cart">
         <span class="cart__price">{{ getCartSummary(cartItems) | price }}</span>
         <span class="cart__count">{{ cartItems.length }}</span>
