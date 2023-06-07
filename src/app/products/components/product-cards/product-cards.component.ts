@@ -23,4 +23,8 @@ export class ProductCardsComponent {
     }
     this.cartService.addToCart(product)
   }
+
+  public trackItem(id: number, item: Product): number {
+    return item.id
+  }
 }
