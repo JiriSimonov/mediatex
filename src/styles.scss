@@ -1,0 +1,25 @@
+:root {
+  --font-text: 'Inter', sans-serif;
+  --heading-font: 'Open Sans', sans-serif;
+  --red: #f44336;
+  --light-red: #f443364d;
+  --dark-blue: #051d36;
+  --black: 333;
+  --dark-gray: #808080;
+  --gray: #f5f7fA;
+  --white: #fff;
+  --yellow: #f5bd23;
+}
+
+.body {
+  margin: 0;
+  background-color: var(--gray);
+  font-family: var(--font-text);
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 20px;
+  max-width: 1264px;
+  box-sizing: border-box;
+}

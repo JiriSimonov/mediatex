@@ -1,0 +1,12 @@
+<header class="header">
+  <div *ngIf="cartItems$ | async as cartItems" class="container">
+    <div class="header__wrapper">
+      <button class="cart">
+        <span class="cart__wrapper">
+          <span class="cart__price">{{ getCartSummary(cartItems) | price }}</span>
+          <span class="cart__count">{{ cartItems.length }}</span>
+        </span>
+      </button>
+    </div>
+  </div>
+</header>
