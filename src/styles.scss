@@ -1,6 +1,6 @@
 :root {
-  --font-text: 'Roboto', sans-serif;
-  --tui-heading-font: 'Roboto', sans-serif;
+  --font-text: 'Inter', sans-serif;
+  --heading-font: 'Open Sans', sans-serif;
   --red: #f44336;
   --light-red: #f443364d;
   --dark-blue: #051d36;
@@ -11,9 +11,10 @@
   --yellow: #f5bd23;
 }
 
-body {
+.body {
   margin: 0;
   background-color: var(--gray);
+  font-family: var(--font-text);
 }
 
 .container {
